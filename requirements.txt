@@ -1,0 +1,14 @@
+# Runtime dependencies for the analysis pipeline.
+# These four packages are imported directly by src/ and analysis/.
+
+numpy>=1.21,<2.0
+pandas>=1.5,<2.3
+scipy>=1.9,<1.14
+matplotlib>=3.5,<3.10
+
+# Optional — for re-running CARLA simulation only.
+# Most users will only re-run the analysis from the released Zenodo
+# archive and do NOT need CARLA installed. The CARLA Python API is
+# distributed with the CARLA 0.9.13 release rather than via PyPI;
+# install it from the CARLA release page and add it to PYTHONPATH.
+# carla==0.9.13               # install from CARLA release page, not pip
