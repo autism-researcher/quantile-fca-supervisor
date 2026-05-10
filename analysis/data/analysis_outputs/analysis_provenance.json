@@ -1,0 +1,25 @@
+{
+  "bootstrap_n": 5000,
+  "pareto_bootstrap_n": 1000,
+  "rng_seed": 12345,
+  "h2_reference": "best (dynamic)",
+  "h2_margin": 0.01,
+  "h6_reference": "ttc_25",
+  "h6_margin_sd_units": 0.2,
+  "n_episodes": 8640,
+  "seeds": [
+    1000,
+    2000,
+    3000
+  ],
+  "controllers": [
+    "innov_010",
+    "innov_015",
+    "innov_020",
+    "normal",
+    "ttc_20",
+    "ttc_25",
+    "ttc_30",
+    "ttc_35"
+  ]
+}

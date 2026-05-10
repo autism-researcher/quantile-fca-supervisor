@@ -1,0 +1,39 @@
+======================================================================
+SENSITIVITY ANALYSIS SUMMARY
+======================================================================
+
+Procedure: For each of 8 risk features, perturb its weight by
++/-20% (relative), renormalize all weights to sum to 1,
+recompute the per-episode peak risk R_max on the Stage A
+NORMAL calibration set, and recompute the calibrated boundary
+B at each target violation rate tau. Report |Delta B|.
+
+Threshold for "robust" claim: |Delta B| < 0.02
+
+--- tau = 0.10 ---
+  Max |Delta B|:  0.0492  (worst: ttc/plus20pct on seed_3000)
+  Mean |Delta B|: 0.0324
+  Perturbations exceeding threshold: 45/48 (93.8%)
+
+--- tau = 0.15 ---
+  Max |Delta B|:  0.0478  (worst: ttc/plus20pct on seed_2000)
+  Mean |Delta B|: 0.0307
+  Perturbations exceeding threshold: 42/48 (87.5%)
+
+--- tau = 0.20 ---
+  Max |Delta B|:  0.0491  (worst: ttc/plus20pct on seed_2000)
+  Mean |Delta B|: 0.0309
+  Perturbations exceeding threshold: 42/48 (87.5%)
+
+--- Overall ---
+  Max |Delta B| across all (feature, direction, tau, seed): 0.0492
+  CONCLUSION: Some weight perturbations exceed the 0.02 threshold.
+  See per-feature breakdown in sensitivity_table.csv.
+
+Suggested paper text (Section III-B):
+----------------------------------------------------------------------
+"A leave-one-feature-out sensitivity analysis was conducted on
+the Stage A NORMAL calibration episodes. Perturbing each w_i by
++/-20% with renormalization produced a maximum change in the
+calibrated boundary B of 0.0492 (most sensitive feature: ttc).
+See sensitivity_table.csv for full breakdown."
