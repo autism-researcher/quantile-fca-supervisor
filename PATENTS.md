@@ -1,9 +1,10 @@
 # Patent Notice
 
 The methods implemented in this repository relate to subject matter
-disclosed in **U.S. Patent and Trademark Office Application
-No. 19/533,330** (filed 2026), held by the authors and/or their
-respective institutions.
+disclosed in a pending patent application. The application number,
+filing date, inventors, and assignee are **withheld for the duration
+of double-blind peer review** and will be disclosed in the
+camera-ready version of the accompanying manuscript.
 
 ## Scope of license
 
@@ -25,12 +26,12 @@ Any commercial use of the methods implemented in this repository,
 including but not limited to incorporation into products, services,
 or systems offered for sale, may require a separate patent license.
 
-Parties interested in commercial licensing should contact:
-
-> Mohammad Belayet Hossain (corresponding author)
-> Dr. Hussein El-Sayyed Center for Scientific Research (HRIC)
-> University of Prince Mugrin, Al Madinah, Saudi Arabia
-> m.hossain@upm.edu.sa
+Parties interested in commercial licensing during the review period
+should contact the IEEE Transactions on Intelligent Transportation
+Systems editorial office, who can route inquiries to the corresponding
+author without compromising review anonymity. Direct licensing contact
+details for the corresponding author and the rights-holding institution
+will be provided in the camera-ready version.
 
 ## Reservation of rights
 
