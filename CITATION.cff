@@ -1,53 +1,34 @@
 cff-version: 1.2.0
-message: "If you use this code, please cite the paper and dataset."
+message: >-
+  Author, affiliation, and citation details are withheld for the
+  duration of double-blind peer review. Full citation metadata will
+  be provided in the camera-ready version of the accompanying
+  manuscript. If you use this code, please cite the paper and
+  dataset using the metadata that will accompany the published
+  version.
 type: software
 title: "Quantile-Calibrated FCA Supervisor"
 abstract: >-
-  Implementation and analysis code for the IEEE T-ITS submission
-  'Real-Time Risk-Aware Supervisory Control for Autonomous Driving
-  with Quantile-Calibrated Safety Envelopes' (Hossain et al., 2026).
+  Implementation and analysis code for an IEEE Transactions on
+  Intelligent Transportation Systems submission (under double-blind
+  review, 2026), titled 'Real-Time Risk-Aware Supervisory Control
+  for Autonomous Driving with Quantile-Calibrated Safety Envelopes'.
   Implements the calibration framework, eight evaluated controllers
   in CARLA, and the pre-registered statistical analysis pipeline.
 authors:
-  - family-names: Hossain
-    given-names: Mohammad Belayet
-    email: m.hossain@upm.edu.sa
-    affiliation: "University of Prince Mugrin, Al Madinah, Saudi Arabia"
-  - family-names: Kamal
-    given-names: Md Abdus Samad
-    affiliation: "Gunma University, Kiryu, Japan"
-  - family-names: Rahman
-    given-names: Syed Sadiqur
-    affiliation: "University of Prince Mugrin, Al Madinah, Saudi Arabia"
-  - family-names: Tayan
-    given-names: Omar
-    affiliation: "University of Prince Mugrin, Al Madinah, Saudi Arabia"
-  - family-names: Mehedi
-    given-names: Ibrahim M.
-    affiliation: "Xi'an Jiaotong-Liverpool University, Suzhou, China"
-  - family-names: Showail
-    given-names: Ahmad
-    affiliation: "Taibah University, Al Madinah, Saudi Arabia"
-version: 1.0.0
-date-released: 2026-05-05
-license: MIT  # update if license decision changes
-repository-code: "https://github.com/autism-researcher/quantile-fca-supervisor"
+  - family-names: Anonymous
+    given-names: Author
+    affiliation: "[Affiliation withheld for double-blind review]"
+version: "1.0.0-review"
+date-released: "2026-05-05"
+license: MIT
+repository-code: "[Anonymized review URL provided via the IEEE T-ITS submission portal]"
 preferred-citation:
   type: article
   authors:
-    - family-names: Hossain
-      given-names: Mohammad Belayet
-    - family-names: Kamal
-      given-names: Md Abdus Samad
-    - family-names: Rahman
-      given-names: Syed Sadiqur
-    - family-names: Tayan
-      given-names: Omar
-    - family-names: Mehedi
-      given-names: Ibrahim M.
-    - family-names: Showail
-      given-names: Ahmad
+    - family-names: Anonymous
+      given-names: Author
   title: "Real-Time Risk-Aware Supervisory Control for Autonomous Driving with Quantile-Calibrated Safety Envelopes"
   journal: "IEEE Transactions on Intelligent Transportation Systems"
   year: 2026
-  notes: "Under review"
+  notes: "Under double-blind review. Full author list, affiliations, and citation details withheld until camera-ready version."
