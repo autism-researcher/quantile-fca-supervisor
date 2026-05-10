@@ -2,7 +2,7 @@
 
 Implementation and analysis code accompanying:
 
-> **Hossain, M.B., Kamal, M.A.S., Rahman, S.S., Tayan, O., Mehedi, I.M., Showail, A.**
+> **[Authors withheld for double-blind review]**
 > "Real-Time Risk-Aware Supervisory Control for Autonomous Driving with
 > Quantile-Calibrated Safety Envelopes,"
 > *IEEE Transactions on Intelligent Transportation Systems* (under review, 2026).
@@ -18,29 +18,31 @@ The hypotheses, analysis plan, exclusion criteria, and disconfirmation
 conditions were registered on the Open Science Framework on 2026-05-01,
 **before** any Stage B evaluation data was analysed.
 
-- **Pre-registration:** https://osf.io/snpbg
-- **Companion theoretical manuscript:** Hossain, Kamal, Mehedi (2026),
-  "Quantile-calibrated invariant sets for data-driven safety in
-  control-affine systems," *Automatica* (under review).
+- **Pre-registration:** *[Anonymized OSF view-only link will be provided
+  to reviewers via the IEEE T-ITS submission portal / cover letter.]*
+- **Companion theoretical manuscript:** *[Authors withheld for double-blind
+  review]* (2026), "Quantile-calibrated invariant sets for data-driven
+  safety in control-affine systems," *Automatica* (under review).
 
 ## Data
 
 The full Stage A calibration dataset (720 NORMAL episodes pooled across
 three seeds) and Stage B evaluation dataset (1,080 paired episodes × 8
-controllers = 8,640 controller-runs) are archived on Zenodo:
+controllers = 8,640 controller-runs) are archived on a public data
+repository.
 
-> **Zenodo DOI:** [10.5281/zenodo.20036794](https://doi.org/10.5281/zenodo.20036794)
+> **Dataset DOI:** *[withheld for double-blind review — access details
+> provided via the IEEE T-ITS submission portal]*
 
 The 94 pilot Stage B paired episodes referenced in pre-registration §6 are
 included in the same archive under `pilot_stageB/`.
 
 ## Repository structure
-
-```
 .
 ├── README.md                          (this file)
 ├── LICENSE
-├── PATENTS.md                         (patent notice for USPTO App 19/533,330)
+├── PATENTS.md                         (patent notice — application number
+│                                       withheld for double-blind review)
 ├── CITATION.cff                       (citation metadata)
 ├── requirements.txt                   (Python dependencies)
 ├── .gitignore
@@ -56,8 +58,7 @@ included in the same archive under `pilot_stageB/`.
 │   └── cross_seed_figure.py             — Figure 6
 │
 └── docs/
-    └── reproducibility.md             — step-by-step reproducibility guide
-```
+└── reproducibility.md             — step-by-step reproducibility guide
 
 ## Reproducibility
 
@@ -66,7 +67,7 @@ To reproduce the headline numerical results in the paper:
 ### 1. Environment setup
 
 ```bash
-git clone https://github.com/autism-researcher/quantile-fca-supervisor.git
+# Clone the repository (URL provided via the anonymized review platform).
 cd quantile-fca-supervisor
 python -m venv venv
 source venv/bin/activate     # Linux/macOS
@@ -76,9 +77,9 @@ pip install -r requirements.txt
 
 ### 2. CARLA installation (only required if re-running simulation)
 
-The simulation framework requires CARLA 0.9.13. The released datasets
-(Zenodo, above) contain the per-episode summaries needed to reproduce
-all paper tables and figures *without* re-running CARLA.
+The simulation framework requires CARLA 0.9.13. The released dataset
+(see Data section above) contains the per-episode summaries needed to
+reproduce all paper tables and figures *without* re-running CARLA.
 
 For instructions on CARLA installation, see:
 https://carla.readthedocs.io/en/0.9.13/
@@ -86,8 +87,8 @@ https://carla.readthedocs.io/en/0.9.13/
 ### 3. Reproduce paper results from released data
 
 ```bash
-# Download the Zenodo archive into ./data/ so that ./data/seed_1000/eval_master.csv etc.
-# exist. Then:
+# Download the dataset archive into ./data/ so that
+# ./data/seed_1000/eval_master.csv etc. exist. Then:
 python src/analyze_framework.py ./data
 # This produces ./data/analysis/combined_master.csv,
 # per_controller_bootstrap_ci.csv, h1..h6 result CSVs, and the
@@ -140,16 +141,20 @@ See paper Tables V (deviations) and XI (hypothesis verdicts) for detail.
 
 ## Patent notice
 
-This work relates to USPTO Application No. 19/533,330. See PATENTS.md.
+This work relates to a pending patent application. Full details
+(application number, inventors, and assignee) are withheld for the
+duration of double-blind review and will be disclosed in the
+camera-ready version of the manuscript. See PATENTS.md for the
+sanitized notice.
 
 ## Citation
 
-If you use this code or build on this work, please cite:
+Citation information for the published version will be provided upon
+acceptance. For review purposes, please cite as:
 
 ```bibtex
-@article{hossain2026fca,
-  author  = {Hossain, M. B. and Kamal, M. A. S. and Rahman, S. S. and
-             Tayan, O. and Mehedi, I. M. and Showail, A.},
+@article{anon2026fca,
+  author  = {{[Authors withheld for double-blind review]}},
   title   = {Real-Time Risk-Aware Supervisory Control for Autonomous
              Driving with Quantile-Calibrated Safety Envelopes},
   journal = {IEEE Transactions on Intelligent Transportation Systems},
@@ -160,5 +165,6 @@ If you use this code or build on this work, please cite:
 
 ## Contact
 
-Mohammad Belayet Hossain (corresponding author):
-m.hossain@upm.edu.sa
+*[Corresponding-author contact details withheld for double-blind review;
+will be provided in the camera-ready version. Reviewers may request
+clarifications through the IEEE T-ITS submission portal.]*
