@@ -1,0 +1,72 @@
+﻿{
+    "source":  "Paper Table II frozen risk-score specification",
+    "risk_score":  "R = sum_i w_i f_i(x_t); no division by sum_i w_i; maximum possible score is 0.94, contained in [0,1].",
+    "features":  [
+                     "speed",
+                     "acceleration",
+                     "jerk",
+                     "steer_var",
+                     "lane_offset",
+                     "ttc",
+                     "headway",
+                     "density"
+                 ],
+    "weights":  [
+                    0.08,
+                    0.1,
+                    0.1,
+                    0.08,
+                    0.12,
+                    0.25,
+                    0.15,
+                    0.06
+                ],
+    "weight_sum":  0.94,
+    "bounds":  {
+                   "speed":  {
+                                 "type":  "upper",
+                                 "max":  28,
+                                 "unit":  "m/s"
+                             },
+                   "acceleration":  {
+                                        "type":  "upper",
+                                        "max":  7,
+                                        "unit":  "m/s^2"
+                                    },
+                   "jerk":  {
+                                "type":  "upper",
+                                "max":  12,
+                                "unit":  "m/s^3"
+                            },
+                   "steer_var":  {
+                                     "type":  "upper",
+                                     "max":  0.35,
+                                     "unit":  "rad"
+                                 },
+                   "lane_offset":  {
+                                       "type":  "upper",
+                                       "max":  1.5,
+                                       "unit":  "m"
+                                   },
+                   "ttc":  {
+                               "type":  "range",
+                               "min":  0.5,
+                               "max":  8,
+                               "unit":  "s",
+                               "convention":  "danger-on-low; infinite or unavailable TTC maps to zero risk"
+                           },
+                   "headway":  {
+                                   "type":  "range",
+                                   "min":  2,
+                                   "max":  60,
+                                   "unit":  "m",
+                                   "convention":  "danger-on-low; unavailable headway maps to zero risk"
+                               },
+                   "density":  {
+                                   "type":  "upper",
+                                   "max":  25,
+                                   "unit":  "veh/35m"
+                               }
+               },
+    "note":  "This paper uses the original frozen CARLA risk-score specification with sum(w)=0.94. Do not renormalize these weights to 1.0 when reproducing the reported results."
+}

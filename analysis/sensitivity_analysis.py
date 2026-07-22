@@ -7,7 +7,7 @@ the specific feature weights you chose?"
 Procedure (one-at-a-time / leave-one-feature-out perturbation):
   For each of the 8 risk features:
     1. Perturb its weight by +/-20% (relative)
-    2. Renormalize all 8 weights to sum to 1
+    2. Renormalize all 8 weights back to the original sum 0.94
     3. Recompute R(x) on every Stage A NORMAL tick
     4. Recompute per-episode peak R_max
     5. Recompute the calibrated boundary B at each tau in {0.10, 0.15, 0.20}
@@ -119,12 +119,13 @@ def compute_R(normalized_df, weights):
 def perturb_weights(original, feature_to_perturb, factor):
     """Perturb a single feature's weight by `factor` (e.g., 1.2 for +20%).
 
-    Renormalizes all weights to sum to 1 after perturbation.
+    Renormalizes all weights back to the original sum 0.94 after perturbation.
     """
     perturbed = dict(original)
     perturbed[feature_to_perturb] = original[feature_to_perturb] * factor
+    target_total = sum(original.values())
     total = sum(perturbed.values())
-    return {k: v / total for k, v in perturbed.items()}
+    return {k: v * target_total / total for k, v in perturbed.items()}
 
 
 def calibrate_boundary(R_max_array, tau):
@@ -276,7 +277,7 @@ def write_summary(df, out_path, taus=(0.10, 0.15, 0.20), threshold=0.02):
     lines.append('=' * 70)
     lines.append('')
     lines.append('Procedure: For each of 8 risk features, perturb its weight by')
-    lines.append('+/-20% (relative), renormalize all weights to sum to 1,')
+    lines.append('+/-20% (relative), renormalize all weights back to the original total 0.94,')
     lines.append('recompute the per-episode peak risk R_max on the Stage A')
     lines.append('NORMAL calibration set, and recompute the calibrated boundary')
     lines.append('B at each target violation rate tau. Report |Delta B|.')
@@ -419,3 +420,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+

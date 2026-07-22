@@ -46,6 +46,7 @@ without downloading the full Zenodo archive.
 ├── PATENTS.md                         (patent notice for USPTO App 19/533,330)
 ├── CITATION.cff                       (citation metadata)
 ├── requirements.txt                   (Python dependencies)
+├── carla_weights.json                  (frozen risk-score weights, sum 0.94)
 ├── .gitignore
 │
 ├── src/                               (CARLA simulation framework)

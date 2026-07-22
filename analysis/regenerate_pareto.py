@@ -62,8 +62,8 @@ for c in innov:
                 xytext=(8, 4), textcoords='offset points', fontsize=10)
 
 # TTC labels
-ttc_labels = {'ttc_20': 'TTC=20', 'ttc_25': 'TTC=25',
-              'ttc_30': 'TTC=30', 'ttc_35': 'TTC=35'}
+ttc_labels = {'ttc_20': 'TTC=2.0 s', 'ttc_25': 'TTC=2.5 s',
+              'ttc_30': 'TTC=3.0 s', 'ttc_35': 'TTC=3.5 s'}
 for c in ttc:
     ax.annotate(ttc_labels[c],
                 (points[c]['ir_mean'], points[c]['tt3_mean']),
@@ -101,7 +101,7 @@ ax.text(0.97, 0.97,
         '\n'
         r'Innov $\tau$=0.20 has $\sim$10% lower'
         '\n'
-        r'TTC<3s exposure than TTC=30'
+        r'TTC<3s exposure than TTC=3.0 s'
         '\n'
         '(CIs nearly disjoint).',
         transform=ax.transAxes, fontsize=9, style='italic',
@@ -134,3 +134,4 @@ print(f'TTC<3 relative gap: {gap_pct:.1f}%')
 print(f'CI overlap on TTC<3: '
       f'innov_020 upper {i20["tt3_hi"]:.4f}  vs  ttc_30 lower {t30["tt3_lo"]:.4f}  '
       f'-> {"NEARLY DISJOINT" if i20["tt3_hi"] < t30["tt3_lo"] + 0.005 else "OVERLAPS"}')
+
