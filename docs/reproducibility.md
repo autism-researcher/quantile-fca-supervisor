@@ -7,7 +7,7 @@ numerical result, table, and figure in the paper from the released data.
 
 - Python 3.9 or later
 - Approximately 8 GB free disk space (after extracting Zenodo archive)
-- The released dataset from Zenodo: [10.5281/zenodo.20036794](https://doi.org/10.5281/zenodo.20036794)
+- The released dataset from Zenodo: [10.5281/zenodo.20073406](https://doi.org/10.5281/zenodo.20073406)
 
 ## 1. Clone and set up
 

@@ -3,8 +3,8 @@
 Implementation and analysis code accompanying:
 
 > **Hossain, M.B., Kamal, M.A.S., Rahman, S.S., Tayan, O., Mehedi, I.M., Showail, A.**
-> "Real-Time Risk-Aware Supervisory Control for Autonomous Driving with
-> Quantile-Calibrated Safety Envelopes,"
+> "Real-Time Quantile-Calibrated Safety Interfaces for
+> Forward-Collision Avoidance,"
 > *IEEE Transactions on Intelligent Transportation Systems* (under review, 2026).
 
 This repository implements the calibration framework, the eight evaluated
@@ -29,7 +29,7 @@ The full Stage A calibration dataset (720 NORMAL episodes pooled across
 three seeds) and Stage B evaluation dataset (1,080 paired episodes × 8
 controllers = 8,640 controller-runs) are archived on Zenodo:
 
-> **Zenodo DOI:** [10.5281/zenodo.20036794](https://doi.org/10.5281/zenodo.20036794)
+> **Zenodo DOI:** [10.5281/zenodo.20073406](https://doi.org/10.5281/zenodo.20073406)
 
 The 94 pilot Stage B paired episodes referenced in pre-registration §6 are
 included in the same archive under `pilot_stageB/`.
@@ -163,8 +163,8 @@ If we use this code or build on this work, please cite:
 @article{hossain2026fca,
   author  = {Hossain, M. B. and Kamal, M. A. S. and Rahman, S. S. and
              Tayan, O. and Mehedi, I. M. and Showail, A.},
-  title   = {Real-Time Risk-Aware Supervisory Control for Autonomous
-             Driving with Quantile-Calibrated Safety Envelopes},
+  title   = {Real-Time Quantile-Calibrated Safety Interfaces for
+             Forward-Collision Avoidance},
   journal = {IEEE Transactions on Intelligent Transportation Systems},
   year    = {2026},
   note    = {Under review}

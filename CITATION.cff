@@ -4,8 +4,8 @@ type: software
 title: "Quantile-Calibrated FCA Supervisor"
 abstract: >-
   Implementation and analysis code for the IEEE T-ITS submission
-  'Real-Time Risk-Aware Supervisory Control for Autonomous Driving
-  with Quantile-Calibrated Safety Envelopes' (Hossain et al., 2026).
+  'Real-Time Quantile-Calibrated Safety Interfaces for
+  Forward-Collision Avoidance' (Hossain et al., 2026).
   Implements the calibration framework, eight evaluated controllers
   in CARLA, and the pre-registered statistical analysis pipeline.
 authors:
@@ -47,7 +47,7 @@ preferred-citation:
       given-names: Ibrahim M.
     - family-names: Showail
       given-names: Ahmad
-  title: "Real-Time Risk-Aware Supervisory Control for Autonomous Driving with Quantile-Calibrated Safety Envelopes"
+  title: "Real-Time Quantile-Calibrated Safety Interfaces for Forward-Collision Avoidance"
   journal: "IEEE Transactions on Intelligent Transportation Systems"
   year: 2026
   notes: "Under review"
