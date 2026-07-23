@@ -151,96 +151,110 @@ pooled = (master.groupby("controller_label")
 ttc_order   = ["ttc_20","ttc_25","ttc_30","ttc_35"]
 innov_order = ["innov_010","innov_015","innov_020"]
 
-fig, ax = plt.subplots(figsize=(3.5, 2.7))
+fig, ax = plt.subplots(figsize=(3.65, 2.85))
 
-# TTC frontier (pooled means)
-ttc_x = pooled.loc[ttc_order,"IR"].values
-ttc_y = pooled.loc[ttc_order,"NMR"].values
-ax.plot(ttc_x, ttc_y, "--", color="#666666", linewidth=0.9, zorder=2,
-        label="TTC tuning grid")
+# TTC interpolated frontier (pooled means). This is shown as the stricter
+# visual reference; H3b itself remains the pre-registered TTC-grid test.
+ttc_x = pooled.loc[ttc_order, "IR"].values.astype(float)
+ttc_y = pooled.loc[ttc_order, "NMR"].values.astype(float)
+order_idx = np.argsort(ttc_x)
+ttc_x = ttc_x[order_idx]
+ttc_y = ttc_y[order_idx]
+ttc_names = [ttc_order[i] for i in order_idx]
 
-# Per-replication TTC scatter (small dots)
+ax.plot(ttc_x, ttc_y, "--", color="#666666", linewidth=1.15, zorder=2,
+        label="TTC interpolated frontier")
+ax.scatter(ttc_x, ttc_y, s=46, marker="s", facecolor="white",
+           edgecolor="#333333", linewidth=1.0, zorder=4,
+           label="TTC thresholds")
+
+# Calibrated controllers.
+in_x = pooled.loc[innov_order, "IR"].values.astype(float)
+in_y = pooled.loc[innov_order, "NMR"].values.astype(float)
+ax.plot(in_x, in_y, "-", color=COL_INNOV, linewidth=1.45, zorder=5,
+        label="Calibrated")
+ax.scatter(in_x, in_y, s=48, marker="o", facecolor=COL_INNOV,
+           edgecolor="white", linewidth=0.8, zorder=6)
+
+# Per-replication clouds kept small and secondary.
 for ctrl in ttc_order:
     sub = per_rep[per_rep.controller_label == ctrl]
-    ax.scatter(sub.IR, sub.NMR, s=6, marker="s", facecolor="white",
-               edgecolor="#999999", linewidth=0.4, alpha=0.5, zorder=3)
-
-# Pooled TTC markers (open squares)
-ax.scatter(ttc_x, ttc_y, s=42, marker="s", facecolor="white",
-           edgecolor="#444444", linewidth=1.0, zorder=4)
-
-# Innov frontier (pooled means)
-in_x = pooled.loc[innov_order,"IR"].values
-in_y = pooled.loc[innov_order,"NMR"].values
-ax.plot(in_x, in_y, "-", color=COL_INNOV, linewidth=1.6, zorder=5,
-        label="Calibrated")
-
-# Per-replication innov scatter
+    ax.scatter(sub.IR, sub.NMR, s=7, marker="s", facecolor="white",
+               edgecolor="#aaaaaa", linewidth=0.35, alpha=0.35, zorder=3)
 for ctrl in innov_order:
     sub = per_rep[per_rep.controller_label == ctrl]
     ax.scatter(sub.IR, sub.NMR, s=8, marker="o", facecolor=COL_INNOV,
-               edgecolor="white", linewidth=0.3, alpha=0.30, zorder=6)
-ax.scatter(in_x, in_y, s=42, marker="o", facecolor=COL_INNOV,
-           edgecolor="white", linewidth=0.8, zorder=7)
+               edgecolor="white", linewidth=0.25, alpha=0.25, zorder=3)
 
-# NORMAL marker
-nx = pooled.loc["normal","IR"]
-ny = pooled.loc["normal","NMR"]
-ax.scatter([nx],[ny], s=42, marker="x", color=COL_NORMAL,
-           linewidth=1.4, zorder=6, label="No FCA")
-ax.annotate("NORMAL", (nx, ny), xytext=(4, -1), textcoords="offset points",
-            color=COL_NORMAL, fontsize=7, va="center")
+# NORMAL reference shown outside the frontier competition.
+nx = pooled.loc["normal", "IR"]
+ny = pooled.loc["normal", "NMR"]
+ax.scatter([nx], [ny], s=48, marker="x", color=COL_NORMAL,
+           linewidth=1.45, zorder=6, label="No FCA")
+ax.annotate("NORMAL", (nx, ny), xytext=(5, 0), textcoords="offset points",
+            color=COL_NORMAL, fontsize=7, va="center", fontweight="bold")
 
-# TTC labels
-ttc_lbl_offsets = {
-    "ttc_20": (-2,  6, "right"),
-    "ttc_25": ( 4, -8, "left"),
-    "ttc_30": ( 5,  4, "left"),
-    "ttc_35": ( 4,  4, "left"),
+# Labels.
+ttc_offsets = {
+    "ttc_20": (-1, 8, "center"),
+    "ttc_25": (4, 7, "left"),
+    "ttc_30": (5, 6, "left"),
+    "ttc_35": (4, -7, "left"),
 }
-for ctrl in ttc_order:
-    px = pooled.loc[ctrl,"IR"]; py = pooled.loc[ctrl,"NMR"]
-    dx,dy,ha = ttc_lbl_offsets[ctrl]
-    ax.annotate(LBL[ctrl], (px,py), xytext=(dx,dy), textcoords="offset points",
+for ctrl in ttc_names:
+    px = pooled.loc[ctrl, "IR"]
+    py = pooled.loc[ctrl, "NMR"]
+    dx, dy, ha = ttc_offsets[ctrl]
+    ax.annotate(LBL[ctrl], (px, py), xytext=(dx, dy), textcoords="offset points",
                 ha=ha, va="center", fontsize=7, color="#333333")
 
-# Innov labels
-innov_lbl_offsets = {
-    "innov_010": (-4,  6, "right"),
-    "innov_015": ( 0,  7, "center"),
-    "innov_020": ( 5, -5, "left"),
+innov_offsets = {
+    "innov_010": (-5, 8, "right"),
+    "innov_015": (0, 8, "center"),
+    "innov_020": (5, -8, "left"),
 }
 for ctrl in innov_order:
-    px = pooled.loc[ctrl,"IR"]; py = pooled.loc[ctrl,"NMR"]
-    dx,dy,ha = innov_lbl_offsets[ctrl]
-    tau_str = LBL[ctrl]
-    ax.annotate(tau_str, (px,py), xytext=(dx,dy), textcoords="offset points",
+    px = pooled.loc[ctrl, "IR"]
+    py = pooled.loc[ctrl, "NMR"]
+    dx, dy, ha = innov_offsets[ctrl]
+    ax.annotate(LBL[ctrl], (px, py), xytext=(dx, dy), textcoords="offset points",
                 ha=ha, va="center", fontsize=7, color=COL_INNOV,
                 fontweight="bold")
 
-# Annotate the dominance gap at IR≈0.10
-# At matched IR, the calibrated frontier sits ~1pp below the TTC one
-p20_x, p20_y = pooled.loc["innov_020","IR"], pooled.loc["innov_020","NMR"]
-t30_x, t30_y = pooled.loc["ttc_30","IR"], pooled.loc["ttc_30","NMR"]
-gap_pp = (t30_y - p20_y) * 100  # percentage points
-# Vertical bracket at IR ~ 0.103 showing the gap
-gap_x = 0.102
-ax.annotate("", xy=(gap_x, t30_y - 0.0005), xytext=(gap_x, p20_y + 0.0005),
-            arrowprops=dict(arrowstyle="<->", color="#c1272d", lw=0.8))
-ax.text(gap_x + 0.002, (p20_y + t30_y) / 2,
-        f"$\\Delta$NMR\n$\\approx{gap_pp:.2f}$ pp\n($\\sim$10\\% rel.)" if rcParams["text.usetex"]
-        else f"\u0394NMR\n\u2248 {gap_pp:.2f} pp\n(~10% rel.)",
-        ha="left", va="center", fontsize=6.5, color="#c1272d")
+# Matched-IR gaps to the stricter interpolated TTC line.
+for ctrl in innov_order:
+    px = float(pooled.loc[ctrl, "IR"])
+    py = float(pooled.loc[ctrl, "NMR"])
+    ttc_interp = float(np.interp(px, ttc_x, ttc_y))
+    ax.plot([px, px], [py, ttc_interp], linestyle=(0, (3, 3)),
+            color=COL_INNOV, linewidth=0.75, alpha=0.7, zorder=1)
+
+# Make the small P0.20 margin explicit without overstating it.
+p20_x = float(pooled.loc["innov_020", "IR"])
+p20_y = float(pooled.loc["innov_020", "NMR"])
+p20_ttc = float(np.interp(p20_x, ttc_x, ttc_y))
+p20_gap_pp = (p20_ttc - p20_y) * 100.0
+ax.annotate(f"smallest matched-IR gap\n{p20_gap_pp:.2f} pp",
+            xy=(p20_x, (p20_y + p20_ttc) / 2.0),
+            xytext=(31, 14), textcoords="offset points",
+            ha="left", va="center", fontsize=6.5, color="#555555",
+            arrowprops=dict(arrowstyle="-", color="#777777", lw=0.6,
+                            shrinkA=0, shrinkB=2))
+
+ax.text(0.071, 0.1047, "lower is better", fontsize=6.5, color="#555555",
+        ha="center", va="center")
+ax.annotate("", xy=(0.060, 0.1018), xytext=(0.069, 0.1042),
+            arrowprops=dict(arrowstyle="->", color="#777777", lw=0.6))
 
 ax.set_xlabel("Mean intervention rate (IR)")
 ax.set_ylabel("Mean TTC$<$3 s exposure (NMR)")
 ax.set_xlim(-0.005, 0.135)
-ax.set_ylim(0.078, 0.110)
+ax.set_ylim(0.078, 0.106)
 ax.spines["top"].set_visible(False)
 ax.spines["right"].set_visible(False)
-ax.legend(loc="lower left", frameon=False, handlelength=1.4,
-          borderpad=0.2, labelspacing=0.3)
 ax.grid(True, linestyle=":", linewidth=0.4, color="0.85", zorder=0)
+ax.legend(loc="lower left", frameon=False, handlelength=1.5,
+          borderpad=0.2, labelspacing=0.3, fontsize=7)
 
 plt.savefig("fig_pareto.pdf", bbox_inches="tight", pad_inches=0.02)
 plt.savefig("fig_pareto.png", bbox_inches="tight", pad_inches=0.02, dpi=300)

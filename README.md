@@ -29,7 +29,7 @@ The full Stage A calibration dataset (720 NORMAL episodes pooled across
 three seeds) and Stage B evaluation dataset (1,080 paired episodes × 8
 controllers = 8,640 controller-runs) are archived on Zenodo:
 
-> **Zenodo DOI:** [10.5281/zenodo.20036793](https://doi.org/10.5281/zenodo.20036793)
+> **Zenodo DOI:** [10.5281/zenodo.20036794](https://doi.org/10.5281/zenodo.20036794)
 
 The 94 pilot Stage B paired episodes referenced in pre-registration §6 are
 included in the same archive under `pilot_stageB/`.
@@ -90,7 +90,9 @@ summary CSVs and figure PNGs needed to regenerate all paper tables and
 figures *without* re-running CARLA:
 
 ```bash
-python analysis/make_all_figures.py
+cd analysis
+python make_all_figures.py
+cd ..
 ```
 
 This regenerates Tables V–VIII and Figures 3, 4, 5, 6, 7, 8 from the paper
@@ -123,9 +125,9 @@ instructions, see https://carla.readthedocs.io/en/0.9.13/
 
 ```bash
 # Each replication takes approximately 8-12 hours on a single workstation.
-python src/batch_run_framework_v4.py --seed 1000 --output-dir ./runs/seed_1000
-python src/batch_run_framework_v4.py --seed 2000 --output-dir ./runs/seed_2000
-python src/batch_run_framework_v4.py --seed 3000 --output-dir ./runs/seed_3000
+python src/batch_run_framework_v4.py --seed0 1000 --out_dir ./runs
+python src/batch_run_framework_v4.py --seed0 2000 --out_dir ./runs
+python src/batch_run_framework_v4.py --seed0 3000 --out_dir ./runs
 ```
 
 See `docs/reproducibility.md` for detailed step-by-step instructions.
@@ -155,7 +157,7 @@ This work relates to USPTO Application No. 19/533,330. See PATENTS.md.
 
 ## Citation
 
-If you use this code or build on this work, please cite:
+If we use this code or build on this work, please cite:
 
 ```bibtex
 @article{hossain2026fca,

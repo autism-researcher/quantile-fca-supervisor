@@ -7,7 +7,7 @@ Batch runner — Python 3.7 compatible.
 This version is tuned for:
 - Realistic (not racing) speeds + smooth motion
 - Still enough risk to differentiate:
-  normal vs TTC baseline vs your innov controller
+  normal vs TTC baseline vs our innov controller
 
 What creates "risk" here (without making CARLA unstable):
 - close lead/stopped vehicle (7–12m)

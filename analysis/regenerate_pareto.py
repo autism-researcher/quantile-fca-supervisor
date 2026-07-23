@@ -1,8 +1,9 @@
-"""Regenerate the Pareto trade-off figure with innov_020 vs ttc_30 annotated.
+"""Legacy exploratory Pareto figure generator.
 
-The annotation highlights the strongest 'Innov below TTC frontier' comparison:
-at nearly identical intervention rates (0.107 vs 0.098), innov_020 achieves
-~10% lower TTC<3s exposure than ttc_30.
+This script preserves an older annotation view centered on innov_020 vs
+ttc_30. It is retained for secondary checks only; the canonical
+paper-facing Pareto figure is now produced by
+``analysis/make_all_figures.py``.
 """
 import pandas as pd
 import matplotlib.pyplot as plt

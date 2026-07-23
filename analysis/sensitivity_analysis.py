@@ -1,8 +1,8 @@
 """
 Sensitivity analysis for the target-violation-rate calibration framework.
 
-This script answers the reviewer question: "Are your conclusions robust to
-the specific feature weights you chose?"
+This script answers the reviewer question: "Are our conclusions robust to
+the specific feature weights we chose?"
 
 Procedure (one-at-a-time / leave-one-feature-out perturbation):
   For each of the 8 risk features:
@@ -420,5 +420,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 

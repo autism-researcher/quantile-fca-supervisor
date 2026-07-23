@@ -5,7 +5,7 @@
 CARLA 0.9.13 — Episode logger (normal / ttc_baseline / innov)
 Python 3.7 compatible.
 
-Your requested fixes:
+Our requested fixes:
 1) No abnormal high speeds:
    - Optional speed caps (ego + traffic) based on current speed limit.
    - Traffic speed distribution kept near-normal.
